@@ -13,11 +13,11 @@ ns=`kubectl config view -o jsonpath="{.contexts[?(@.name == \"$ctx\")].context.n
 ns=${ns:-default}
 echo KUBE_NAMESPACE is $ns
 
-t="http://topdog.$addr.xip.io/"
+t="http://$addr:5000/"
 
-w="http://webnull.$addr.xip.io/status/"
+w="http://$addr:8082/status/"
 
-h="http://hurl.$addr.xip.io/"
+h="http://$addr:8083/"
 hp=`kubectl get pod -l app=hurl -o name | sed 's/^pod\///'`
 echo HURL pod is $hp
 
